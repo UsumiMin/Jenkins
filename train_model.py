@@ -104,6 +104,7 @@ if __name__ == "__main__":
         order_by=[{"field_name": "metrics.accuracy", "ascending": False}],
         output_format="list",
     )[0]
-    path2model = f"mlruns:/1/models/{best_model.model_id}"
-    path2model = dfruns.sort_values("metrics.r2", ascending=False).iloc[0]['artifact_uri'].replace("file://","") + '/model' #путь до эксперимента с лучшей моделью
+    best_run = dfruns.sort_values("metrics.r2", ascending=False).iloc[0]
+    run_id = best_run.run_id
+    path2model = mlflow.artifacts.download_artifacts(run_id=run_id, artifact_path="model")
     print(path2model)
