@@ -1,4 +1,5 @@
 from os import name
+import os
 from sklearn.preprocessing import StandardScaler, OrdinalEncoder, OneHotEncoder, PowerTransformer
 import pandas as pd
 from sklearn.pipeline import Pipeline
@@ -106,5 +107,6 @@ if __name__ == "__main__":
     )[0]
     best_run = dfruns.sort_values("metrics.r2", ascending=False).iloc[0]
     run_id = best_run.run_id
+    output_dir = os.path.join(os.getcwd(), "best_model_dir")
     path2model = mlflow.artifacts.download_artifacts(run_id=run_id, artifact_path="model",dst_path=output_dir)
     print(path2model)
