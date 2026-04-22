@@ -104,5 +104,5 @@ if __name__ == "__main__":
         order_by=[{"field_name": "metrics.accuracy", "ascending": False}],
         output_format="list",
     )[0]
-    path2model = f"models:/{best_model.model_id}"
+    path2model = f"mlruns:/1:/models:/{best_model.model_id}"
     print(path2model)
