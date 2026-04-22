@@ -106,5 +106,5 @@ if __name__ == "__main__":
     )[0]
     best_run = dfruns.sort_values("metrics.r2", ascending=False).iloc[0]
     run_id = best_run.run_id
-    path2model = mlflow.artifacts.download_artifacts(run_id=run_id, artifact_path="model")
+    path2model = mlflow.artifacts.download_artifacts(run_id=run_id, artifact_path="model",dst_path=output_dir)
     print(path2model)
