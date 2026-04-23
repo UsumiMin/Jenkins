@@ -18,7 +18,6 @@ import joblib
 def scale_frame(frame):
     df = frame.copy()
     X,y = df.drop(columns = ['math score']), df['math score']
-    print(f"Features being used: {X.columns.tolist()}")
     scaler = StandardScaler()
     power_trans = PowerTransformer()
     X_scale = scaler.fit_transform(X.values)
